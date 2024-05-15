@@ -7,10 +7,10 @@
 5. **ODM**: **MongoDB**의 데이터를 쉽게 읽고 쓰게 해주는 [**mongoose](https://mongoosejs.com/docs/guide.html) ODM**을 사용합니다.
 
 ## 필수 요구사항  
--캐릭터 생성 API : POST ✅  
--캐릭터 상세 조회 API : GET ✅  
--캐릭터 삭제 API : DELETE ✅  
--아이템 생성 API : POST ✅  
--아이템 목록 조회 API : GET ✅  
--아이템 상세 조회 API: GET ✅  
--아이템 수정 API : PETCH ✅  
+- 캐릭터 생성 API : POST ✅  
+- 캐릭터 상세 조회 API : GET ✅  
+- 캐릭터 삭제 API : DELETE ✅  
+- 아이템 생성 API : POST ✅  
+- 아이템 목록 조회 API : GET ✅  
+- 아이템 상세 조회 API: GET ✅  
+- 아이템 수정 API : PETCH ✅  
