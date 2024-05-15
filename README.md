@@ -13,4 +13,4 @@
 - 아이템 생성 API : POST ✅  
 - 아이템 목록 조회 API : GET ✅  
 - 아이템 상세 조회 API: GET ✅  
-- 아이템 수정 API : PETCH ✅  
+- 아이템 수정 API : PATCH ✅  
