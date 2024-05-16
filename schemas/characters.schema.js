@@ -21,16 +21,4 @@ const characterSchema = new mongoose.Schema({
   },
 });
 
-const itemSchema = new mongoose.Schema({
-  item_code: Number,
-  item_name: String,
-  item_stat: {
-    health: Number,
-    power: Number,
-  },
-});
-
-const Character = mongoose.model("Character", characterSchema);
-const Item = mongoose.model("Item", itemSchema);
-
-export { Character, Item };
+export default mongoose.model("Character", characterSchema);

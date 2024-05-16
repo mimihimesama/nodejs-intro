@@ -1,6 +1,7 @@
 import express from "express";
 import connect from "./schemas/index.js";
 import charactersRouter from "./routes/characters.router.js";
+import itemsRouter from "./routes/items.router.js";
 import ErrorHandlerMiddleware from "./middlewares/error-handler.middleware.js";
 
 const app = express();
@@ -23,7 +24,7 @@ router.get("/", (req, res) => {
   return res.json({ message: "Hi!" });
 });
 
-app.use("/api", [router, charactersRouter]);
+app.use("/api", [router, charactersRouter, itemsRouter]);
 
 app.use(ErrorHandlerMiddleware);
 
