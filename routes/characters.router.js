@@ -48,7 +48,9 @@ router.get("/characters/:characterId", async (req, res) => {
     character_id: characterId,
   }).exec();
   if (!character) {
-    return res.status(404).json({ message: "캐릭터 조회에 실패하였습니다." });
+    return res
+      .status(404)
+      .json({ errorMessage: "캐릭터 조회에 실패하였습니다." });
   }
 
   return res.status(200).json({
@@ -68,7 +70,9 @@ router.delete("/characters/:characterId", async (req, res) => {
     character_id: characterId,
   }).exec();
   if (!character) {
-    return res.status(404).json({ message: "캐릭터 조회에 실패하였습니다." });
+    return res
+      .status(404)
+      .json({ errorMessage: "캐릭터 조회에 실패하였습니다." });
   }
 
   await Character.deleteOne({ character_id: characterId }).exec();
@@ -115,7 +119,9 @@ router.get("/items/:itemId", async (req, res) => {
     item_code: itemId,
   }).exec();
   if (!item) {
-    return res.status(404).json({ message: "아이템 조회에 실패하였습니다." });
+    return res
+      .status(404)
+      .json({ errorMessage: "아이템 조회에 실패하였습니다." });
   }
 
   return res.status(200).json({
@@ -141,7 +147,9 @@ router.patch("/items/:itemId", async (req, res, next) => {
     const item = await Item.findOne({ item_code: itemId }).exec();
 
     if (!item) {
-      return res.status(404).json({ message: "아이템을 찾을 수 없습니다." });
+      return res
+        .status(404)
+        .json({ errorMessage: "아이템을 찾을 수 없습니다." });
     }
 
     if (item_name) {
