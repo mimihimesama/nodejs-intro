@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const itemSchema = new mongoose.Schema({
-  item_code: Number,
+  item_code: { type: Number, unique: true },
   item_name: String,
   item_stat: {
     health: Number,
