@@ -17,35 +17,16 @@
 - 아이템 상세 조회 API: GET ✅
 - 아이템 수정 API : PATCH ✅
 
-| 기능        | API URL     | Method | request                     | response                                                                                       | Response(error)                      |
-| ----------- | ----------- | ------ | --------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------ |
-| 캐릭터 생성 | /characters | POST   | { "name": "청순한 붕어빵" } | { "message": "새로운 캐릭터 ‘청순한 붕어빵’을 생성하셨습니다!" "data": { "character_id": 1 } } | 400 Bad Request (이미 존재하는 이름) |
-
-{ "errorMessage": "이미 존재하는 이름입니다." }
-400 Bad Request (입력 데이터 검증 실패)
-{ "errorMessage": err.message }
-500 Internal Server Error (서버 내부 에러 발생 시)
-{ "errorMessage": "서버에서 에러가 발생하였습니다." } |
-| 캐릭터 목록 조회 | /characters | GET | { } | [ { "character_id":1,"name":"청순한 붕어빵" },{ "character_id":2,"name":"방먼지" },{ "character_id":3,"name":"제이" },{ "character_id":4,"name":"쩡원" } ] | 내용3 |
-| 캐릭터 상세 조회 | /characters/:characterId | GET | { } | { "data": { "name":"청순한 붕어빵","health":500,"power":100 } } | 404 Not Found (character*id에 해당하는 캐릭터가 존재하지 않을 때)
-{ "errorMessage": "캐릭터 조회에 실패하였습니다." } |
-| 캐릭터 삭제 | /characters/:characterId | DELETE | { } | { "message": "캐릭터 ‘청순한 붕어빵’을 삭제하였습니다." } | 404 Not Found (character_id에 해당하는 캐릭터가 존재하지 않을 때)
-{ "errorMessage": "캐릭터 조회에 실패하였습니다." } |
-| 아이템 생성 | /items | POST | { "item_code": 3, "item_name": "파멸의 반지", "item_stat": { "health": 20, "power": 2 } } | { message: "아이템이 생성되었습니다." } | 400 Bad Request (입력 데이터 검증 실패)
-{ "message": "입력 데이터가 유효하지 않습니다." }
-400 Bad Request (입력 데이터 검증 실패)
-{ "errorMessage": err.message }
-500 Internal Server Error (서버 내부 에러 발생 시)
-{ "errorMessage": "서버에서 에러가 발생하였습니다." } |
-| 아이템 목록 조회 | /items | GET | { } | [ { "item_code":1,"item_name":"근육파괴술" },{ "item_code":2,"item_name":"잠좀자자" },{ "item_code":3,"item_name":"파멸의 반지*리뉴얼" },{ "item_code":4,"item_name":"레전드 망토" } ] | 내용3 |
-| 아이템 상세 조회 | /itmes/:itmeId | GET | { } | { "item_code":1,"item_name":"근육파괴술","item_stat":{ "health":5,"power":300 } } | 404 Not Found (item_code에 해당하는 아이템이 존재하지 않을 때)
-{ "errorMessage": "아이템 조회에 실패하였습니다." } |
-| 아이템 수정 | /itmes/:itmeId | PATCH | { "item_code":3,"item_name":"파멸의 반지 리뉴얼","item_stat":{ "health":30 } } | { message: "아이템이 성공적으로 업데이트되었습니다." } | 404 Not Found (item_code에 해당하는 아이템이 존재하지 않을 때)
-{ "errorMessage": "아이템을 찾을 수 없습니다." }
-400 Bad Request (입력 데이터 검증 실패)
-{ "errorMessage": err.message }
-500 Internal Server Error (서버 내부 에러 발생 시)
-{ "errorMessage": "서버에서 에러가 발생하였습니다." } |
+| 기능             | API URL                  | Method | request                                                                                   | response                                                                                                                                                                               | Response(error)                                                                                                                                                                                                                                                                                           |
+| ---------------- | ------------------------ | ------ | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 캐릭터 생성      | /characters              | POST   | { "name": "청순한 붕어빵" }                                                               | { "message": "새로운 캐릭터 ‘청순한 붕어빵’을 생성하셨습니다!" "data": { "character_id": 1 } }                                                                                         | 400 Bad Request (이미 존재하는 이름) -> { "errorMessage": "이미 존재하는 이름입니다." } 400 Bad Request (입력 데이터 검증 실패) -> { "errorMessage": err.message } 500 Internal Server Error (서버 내부 에러 발생 시) -> { "errorMessage": "서버에서 에러가 발생하였습니다." }                            |
+| 캐릭터 목록 조회 | /characters              | GET    | { }                                                                                       | [ { "character_id":1,"name":"청순한 붕어빵" },{ "character_id":2,"name":"방먼지" },{ "character_id":3,"name":"제이" },{ "character_id":4,"name":"쩡원" } ]                             |                                                                                                                                                                                                                                                                                                           |
+| 캐릭터 상세 조회 | /characters/:characterId | GET    | { }                                                                                       | { "data": { "name":"청순한 붕어빵","health":500,"power":100 } }                                                                                                                        | 404 Not Found (character\*id에 해당하는 캐릭터가 존재하지 않을 때) -> { "errorMessage": "캐릭터 조회에 실패하였습니다." }                                                                                                                                                                                 |
+| 캐릭터 삭제      | /characters/:characterId | DELETE | { }                                                                                       | { "message": "캐릭터 ‘청순한 붕어빵’을 삭제하였습니다." }                                                                                                                              | 404 Not Found (character_id에 해당하는 캐릭터가 존재하지 않을 때) -> { "errorMessage": "캐릭터 조회에 실패하였습니다." }                                                                                                                                                                                  |
+| 아이템 생성      | /items                   | POST   | { "item_code": 3, "item_name": "파멸의 반지", "item_stat": { "health": 20, "power": 2 } } | { message: "아이템이 생성되었습니다." }                                                                                                                                                | 400 Bad Request (입력 데이터 검증 실패) -> { "message": "입력 데이터가 유효하지 않습니다." } 400 Bad Request (입력 데이터 검증 실패) -> { "errorMessage": err.message } 500 Internal Server Error (서버 내부 에러 발생 시) -> { "errorMessage": "서버에서 에러가 발생하였습니다." }                       |
+| 아이템 목록 조회 | /items                   | GET    | { }                                                                                       | [ { "item_code":1,"item_name":"근육파괴술" },{ "item_code":2,"item_name":"잠좀자자" },{ "item_code":3,"item_name":"파멸의 반지*리뉴얼" },{ "item_code":4,"item_name":"레전드 망토" } ] |                                                                                                                                                                                                                                                                                                           |
+| 아이템 상세 조회 | /itmes/:itmeId           | GET    | { }                                                                                       | { "item_code":1,"item_name":"근육파괴술","item_stat":{ "health":5,"power":300 } }                                                                                                      | 404 Not Found (item_code에 해당하는 아이템이 존재하지 않을 때) -> { "errorMessage": "아이템 조회에 실패하였습니다." }                                                                                                                                                                                     |
+| 아이템 수정      | /itmes/:itmeId           | PATCH  | { "item_code":3,"item_name":"파멸의 반지 리뉴얼","item_stat":{ "health":30 } }            | { message: "아이템이 성공적으로 업데이트되었습니다." }                                                                                                                                 | 404 Not Found (item_code에 해당하는 아이템이 존재하지 않을 때) -> { "errorMessage": "아이템을 찾을 수 없습니다." } 400 Bad Request (입력 데이터 검증 실패) -> { "errorMessage": err.message } 500 Internal Server Error (서버 내부 에러 발생 시) -> { "errorMessage": "서버에서 에러가 발생하였습니다." } |
 
 ## 🖊️ 프로젝트 회고
 
