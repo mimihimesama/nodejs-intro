@@ -36,6 +36,12 @@ router.post("/characters", async (req, res, next) => {
   }
 });
 
+/* 캐릭터 목록 조회 API */
+router.get("/characters", async (req, res) => {
+  const characters = await Character.find({}, { character_id: 1, name: 1, _id: 0 }).sort({ character_id: 1 });
+  return res.status(200).json(characters);
+});
+
 /* 캐릭터 상세 조회 API */
 router.get("/characters/:characterId", async (req, res) => {
   const { characterId } = req.params;
