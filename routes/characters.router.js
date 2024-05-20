@@ -67,14 +67,12 @@ router.get("/characters/:characterId", async (req, res) => {
 router.delete("/characters/:characterId", async (req, res) => {
   const { characterId } = req.params;
 
-  const character = await Character.findOne({
+  const character = await Character.findOneAndDelete({
     character_id: characterId,
   }).exec();
   if (!character) {
     return res.status(404).json({ errorMessage: "캐릭터 조회에 실패하였습니다." });
   }
-
-  await Character.deleteOne({ character_id: characterId }).exec();
 
   return res.status(200).json({
     message: `캐릭터 ‘${character.name}’를 삭제하였습니다.`,
